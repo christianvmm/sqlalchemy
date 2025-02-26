@@ -32,17 +32,21 @@ def create_fake_event():
 		empleados_requeridos=10
 	)
 
+	# record "new" has no field "fecha_evento"
+	# CONTEXT:  SQL expression "NEW.fecha_solicitud > NEW.fecha_evento"
+	# PL/pgSQL function validar_fecha_evento() line 3 at IF
+	session.add(evento)
+	session.commit()
 	print("Evento creado")
 
 
-# create_fake_event()
+create_fake_event()
 
 
-def listar_eventos_por_fecha(session, fecha: date):
-	return session.query(Evento).filter(Evento.fecha_solicitud == fecha).all()
+# def listar_eventos_por_fecha(session, fecha: date):
+# 	return session.query(Evento).all()
 
-# Uso:
-eventos = listar_eventos_por_fecha(session, date.today())
-print(len(eventos))
+# eventos = listar_eventos_por_fecha(session, date.today())
+# print(len(eventos))
 # for evento in eventos:
 #     print(evento.nombre, evento.descripcion)
