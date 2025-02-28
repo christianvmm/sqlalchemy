@@ -40,13 +40,13 @@ def create_fake_event():
 	print("Evento creado")
 
 
-create_fake_event()
+# create_fake_event()
 
 
-# def listar_eventos_por_fecha(session, fecha: date):
-# 	return session.query(Evento).all()
+def listar_eventos_por_fecha(session, fecha: date):
+	return session.query(Evento).all()
 
-# eventos = listar_eventos_por_fecha(session, date.today())
-# print(len(eventos))
-# for evento in eventos:
-#     print(evento.nombre, evento.descripcion)
+eventos = listar_eventos_por_fecha(session, date.today())
+print(len(eventos))
+for evento in eventos:
+    print(evento.nombre, evento.descripcion)
